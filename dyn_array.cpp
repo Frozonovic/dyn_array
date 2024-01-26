@@ -5,21 +5,37 @@
  * A program that demonstrates dynamic allocation of arrays
  * on the heap.
  *
- * @author Brian R. Snider (bsnider@georgefox.edu)
+ * @author Brody Lee (blee20@georgefox.edu)
  */
 
 #include <iostream>
+#include <cmath>
+
 
 int main(int argc, char* argv[])
 {
-    // TODO determine array capacity from command-line args
+    // Check arg count
+    if (argc > 2) {
+        // TODO: Throw error?
+    }
 
-    // TODO dynamically allocate array
+    // Determine array capacity from command-line args
+    auto capacity = static_cast<unsigned long long>(*argv[1]);
 
-    // TODO populate array
+    // Dynamically allocate array
+    auto arr = new unsigned long long[capacity];
 
-    // TODO iterate through array and print contents to stdout
+    // Populate array
+    for (int i = 0; i < capacity; i++) {
+        arr[i] = pow(2, i);
+    }
 
-    // TODO free allocated array
+    // Iterate through array and print contents to stdout
+    for(int i = 0; i < capacity; i++) {
+        std::cout << arr[i] << std::endl;
+    }
+
+    // Free allocated array
+    delete[] arr;
 }
 
